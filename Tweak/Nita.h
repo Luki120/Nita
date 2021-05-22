@@ -9,16 +9,19 @@ BOOL enabled = NO;
 NSString* conditions = nil;
 NSString* weatherString = nil;
 
+// position
+BOOL replaceCarrierSwitch = YES;
+BOOL replaceTimeSwitch = NO;
+BOOL alongsideTimeSwitch = NO;
+
 // visibility
-BOOL showEmojiSwitch = NO;
+BOOL showEmojiSwitch = YES;
 BOOL showTemperatureSwitch = NO;
 
 // miscellaneous
-BOOL replaceTimeSwitch = NO;
 BOOL hideBreadcrumbsSwitch = YES;
 
-@interface _UIStatusBarStringView : UILabel
-@property(nonatomic, copy)NSString* originalText;
+@interface _UIStatusBarStringView : UIView
 - (void)getEmojis;
 @end
 

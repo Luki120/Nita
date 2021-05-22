@@ -1,4 +1,4 @@
-BUNDLE_NAME = NitaPrefs
+BUNDLE_NAME = NitaPreferences
 $(BUNDLE_NAME)_FILES = $(wildcard *.m)
 $(BUNDLE_NAME)_CFLAGS = -fobjc-arc
 $(BUNDLE_NAME)_INSTALL_PATH = /Library/PreferenceBundles

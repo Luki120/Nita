@@ -4,7 +4,7 @@
 
 - (UIColor *)tintColor {
 
-    return [UIColor colorWithRed: 0.76 green: 0.67 blue: 1.00 alpha: 1.00];
+    return [UIColor colorWithRed:0.76 green:0.67 blue:1 alpha:1];
 
 }
 
@@ -34,7 +34,7 @@
 
 - (UIColor *)navigationBarBackgroundColor {
 
-    return [UIColor colorWithRed: 0.76 green: 0.67 blue: 1.00 alpha: 1.00];
+    return [UIColor colorWithRed:0.76 green:0.67 blue:1 alpha:1];
 
 }
 

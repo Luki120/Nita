@@ -24,46 +24,19 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Visibility</string>
-			<key>footerText</key>
-			<string>Disable both options to show only text</string>
-			<key>isStaticText</key>
+			<string>Position</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
 			<key>defaults</key>
 			<string>love.litten.nitapreferences</string>
 			<key>key</key>
-			<string>showEmoji</string>
+			<string>replaceCarrier</string>
 			<key>label</key>
-			<string>Show emoji</string>
-			<key>PostNotification</key>
-			<string>love.litten.nitapreferences/ReloadPrefs</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>love.litten.nitapreferences</string>
-			<key>key</key>
-			<string>showTemperature</string>
-			<key>label</key>
-			<string>Show temperature</string>
-			<key>PostNotification</key>
-			<string>love.litten.nitapreferences/ReloadPrefs</string>
-		</dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Miscellaneous</string>
+			<string>Replace carrier</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -76,8 +49,60 @@
 			<string>replaceTime</string>
 			<key>label</key>
 			<string>Replace time</string>
-			<key>PostNotification</key>
-			<string>love.litten.nitapreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>love.litten.nitapreferences</string>
+			<key>key</key>
+			<string>alongsideTime</string>
+			<key>label</key>
+			<string>Alongside time</string>
+		</dict>
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Visibility</string>
+			<key>footerText</key>
+			<string>Disable both options to show only text</string>
+			<key>isStaticText</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>love.litten.nitapreferences</string>
+			<key>key</key>
+			<string>showEmoji</string>
+			<key>label</key>
+			<string>Show emoji</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>love.litten.nitapreferences</string>
+			<key>key</key>
+			<string>showTemperature</string>
+			<key>label</key>
+			<string>Show temperature</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Miscellaneous</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -90,8 +115,6 @@
 			<string>hideBreadcrumbs</string>
 			<key>label</key>
 			<string>Hide breadcrumbs</string>
-			<key>PostNotification</key>
-			<string>love.litten.nitapreferences/ReloadPrefs</string>
 		</dict>
 
 		<dict>
@@ -129,9 +152,9 @@
  			<key>label</key>
  			<string>Contributors</string>
  			<key>detail</key>
- 			<string>NTAContributorsSubPrefsListController</string>
+ 			<string>NTAContributorsSubPreferencesListController</string>
  			<key>NTASub</key>
- 			<string>contributorsSub</string>
+ 			<string>sub/contributors</string>
  		</dict>
 
 		<dict>
@@ -148,7 +171,7 @@
 			<key>subtitle</key>
 			<string>Dress up your lockscreen</string>
 			<key>icon</key>
-			<string>Dress.png</string>
+			<string>featured/Dress.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/drs/</string>
 		</dict>
@@ -160,7 +183,7 @@
 			<key>subtitle</key>
 			<string>Text selection, but colorful</string>
 			<key>icon</key>
-			<string>Butterfly.png</string>
+			<string>featured/Butterfly.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/bty/</string>
 		</dict>

@@ -6,34 +6,47 @@
 
 - (void)setText:(id)arg1 { // set emoji
 
-	%orig;
-
-	if (!replaceTimeSwitch && !([[self originalText] containsString:@":"] || [[self originalText] containsString:@"%"] || [[self originalText] containsString:@"2G"] || [[self originalText] containsString:@"3G"] || [[self originalText] containsString:@"4G"] || [[self originalText] containsString:@"5G"] || [[self originalText] containsString:@"LTE"] || [[self originalText] isEqualToString:@"E"] || [[self originalText] isEqualToString:@"e"])) {
-		
+	if (replaceCarrierSwitch && !([arg1 containsString:@":"] || [arg1 containsString:@"%"] || [arg1 containsString:@"2G"] || [arg1 containsString:@"3G"] || [arg1 containsString:@"4G"] || [arg1 containsString:@"5G"] || [arg1 containsString:@"LTE"] || [arg1 isEqualToString:@"E"] || [arg1 isEqualToString:@"e"])) {
 		[self getEmojis];
 
 		if (showEmojiSwitch && !showTemperatureSwitch)
-			%orig(weatherString);
+			arg1 = weatherString;
 		else if (showEmojiSwitch && showTemperatureSwitch)
-			%orig([NSString stringWithFormat:@"%@ %@", weatherString, [[PDDokdo sharedInstance] currentTemperature]]);
+			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else if (!showEmojiSwitch && showTemperatureSwitch)
-			%orig([NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]]);
+			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
-			%orig(conditions);
-	}
+			arg1 = conditions;
 
-	if (replaceTimeSwitch && !([[self originalText] containsString:@"%"] || [[self originalText] containsString:@"2G"] || [[self originalText] containsString:@"3G"] || [[self originalText] containsString:@"4G"] || [[self originalText] containsString:@"5G"] || [[self originalText] containsString:@"LTE"] || [[self originalText] isEqualToString:@"E"] || [[self originalText] isEqualToString:@"e"])) {
-		
+		return %orig(arg1);
+	} else if (replaceTimeSwitch && [arg1 containsString:@":"]) {
 		[self getEmojis];
 
 		if (showEmojiSwitch && !showTemperatureSwitch)
-			%orig(weatherString);
+			arg1 = weatherString;
 		else if (showEmojiSwitch && showTemperatureSwitch)
-			%orig([NSString stringWithFormat:@"%@ %@", weatherString, [[PDDokdo sharedInstance] currentTemperature]]);
+			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else if (!showEmojiSwitch && showTemperatureSwitch)
-			%orig([NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]]);
+			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
-			%orig(conditions);
+			arg1 = conditions;
+
+		return %orig(arg1);
+	} else if (alongsideTimeSwitch && [arg1 containsString:@":"]) {
+		[self getEmojis];
+
+		if (showEmojiSwitch && !showTemperatureSwitch)
+			arg1 = [NSString stringWithFormat:@"%@ %@", arg1, weatherString];
+		else if (showEmojiSwitch && showTemperatureSwitch)
+			arg1 = [NSString stringWithFormat:@"%@ %@ %@", arg1, weatherString, [[PDDokdo sharedInstance] currentTemperature]];
+		else if (!showEmojiSwitch && showTemperatureSwitch)
+			arg1 = [NSString stringWithFormat:@"%@ %@", arg1, [[PDDokdo sharedInstance] currentTemperature]];
+		else
+			arg1 = conditions;
+
+		return %orig(arg1);
+	} else {
+		return %orig;
 	}
 
 }
@@ -45,16 +58,6 @@
 	WAForecastModel* currentModel = [weatherWidget currentForecastModel];
 	WACurrentForecast* currentCond = [currentModel currentConditions];
 	NSInteger currentCode = [currentCond conditionCode];
-
-	NSDateFormatter* formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"HH.mm"];
-    NSString* currentTime = [formatter stringFromDate:[NSDate date]];
-
-    if ([currentTime floatValue] >= 18.00 || [currentTime floatValue] <= 6.00) {
-		if (currentCode <= 32) weatherString = @"🌙";
-    } else {
-        if (currentCode <= 32) weatherString = @"☀️";
-    }
 
 	if (currentCode <= 2)
 		weatherString = @"🌪";
@@ -82,6 +85,8 @@
 		weatherString = @"🌥";
 	else if (currentCode <= 30)
 		weatherString = @"⛅️";
+	else if (currentCode <= 32)
+		weatherString = @"☀️";
 	else if (currentCode <= 34)
 		weatherString = @"🌤";
 	else if (currentCode == 35)
@@ -107,7 +112,10 @@
 
 + (BOOL)_shouldAddBreadcrumbToActivatingSceneEntity:(id)arg1 sceneHandle:(id)arg2 withTransitionContext:(id)arg3 { // hide breadcrumbs
 
-	return !hideBreadcrumbsSwitch;
+	if (hideBreadcrumbsSwitch)
+		return NO;
+	else
+		return %orig;
 
 }
 
@@ -157,14 +165,18 @@
 	preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.nitapreferences"];
 
   	[preferences registerBool:&enabled default:nil forKey:@"Enabled"];
-	  if (!enabled) return;
+	if (!enabled) return;
+
+	// position
+	[preferences registerBool:&replaceCarrierSwitch default:YES forKey:@"replaceCarrier"];
+	[preferences registerBool:&replaceTimeSwitch default:NO forKey:@"replaceTime"];
+	[preferences registerBool:&alongsideTimeSwitch default:NO forKey:@"alongsideTime"];
 
 	// visibility
-	[preferences registerBool:&showEmojiSwitch default:NO forKey:@"showEmoji"];
+	[preferences registerBool:&showEmojiSwitch default:YES forKey:@"showEmoji"];
 	[preferences registerBool:&showTemperatureSwitch default:NO forKey:@"showTemperature"];
 
 	// miscellaneous
-	[preferences registerBool:&replaceTimeSwitch default:NO forKey:@"replaceTime"];
 	[preferences registerBool:&hideBreadcrumbsSwitch default:YES forKey:@"hideBreadcrumbs"];
 
 	%init(Nita);
