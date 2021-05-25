@@ -6,7 +6,7 @@
 
 - (void)setText:(id)arg1 { // set emoji
 
-	if (replaceCarrierSwitch && !([arg1 containsString:@":"] || [arg1 containsString:@"%"] || [arg1 containsString:@"2G"] || [arg1 containsString:@"3G"] || [arg1 containsString:@"4G"] || [arg1 containsString:@"5G"] || [arg1 containsString:@"LTE"] || [arg1 isEqualToString:@"E"] || [arg1 isEqualToString:@"e"])) {
+	if (replaceCarrierSwitch && ![arg1 containsString:@":"] && ![arg1 containsString:@"%"] && ![arg1 containsString:@"2G"] && ![arg1 containsString:@"3G"] && ![arg1 containsString:@"4G"] && ![arg1 containsString:@"5G"] && ![arg1 containsString:@"LTE"] && ![arg1 isEqualToString:@"E"]) {
 		[self getEmojis];
 
 		if (showEmojiSwitch && !showTemperatureSwitch)
