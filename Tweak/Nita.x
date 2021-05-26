@@ -12,7 +12,7 @@
 		if (showEmojiSwitch && !showTemperatureSwitch)
 			arg1 = weatherString;
 		else if (showEmojiSwitch && showTemperatureSwitch)
-			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
+			arg1 = [NSString stringWithFormat:@"%@ %@", weatherString, [[PDDokdo sharedInstance] currentTemperature]];
 		else if (!showEmojiSwitch && showTemperatureSwitch)
 			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
@@ -25,7 +25,7 @@
 		if (showEmojiSwitch && !showTemperatureSwitch)
 			arg1 = weatherString;
 		else if (showEmojiSwitch && showTemperatureSwitch)
-			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
+			arg1 = [NSString stringWithFormat:@"%@ %@", weatherString, [[PDDokdo sharedInstance] currentTemperature]];
 		else if (!showEmojiSwitch && showTemperatureSwitch)
 			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
