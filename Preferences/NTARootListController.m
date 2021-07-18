@@ -26,7 +26,7 @@
     self.navigationItem.titleView = [UIView new];
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [[self titleLabel] setFont:[UIFont boldSystemFontOfSize:17]];
-    [[self titleLabel] setText:@"1.5.2"];
+    [[self titleLabel] setText:@"1.5.3"];
     [[self titleLabel] setTextColor:[UIColor whiteColor]];
     [[self titleLabel] setTextAlignment:NSTextAlignmentCenter];
     [[[self navigationItem] titleView] addSubview:[self titleLabel]];
@@ -110,6 +110,7 @@
         if (![[self preferences] objectForKey:@"wasWelcomed"] || ![[[self preferences] objectForKey:@"wasWelcomed"] isEqual:@(YES)]) {
             WelcomeViewController* controller = [WelcomeViewController new];
             [self presentViewController:controller animated:YES completion:nil];
+            [[self preferences] setBool:YES forKey:@"wasWelcomed"];
         }
     }
     
