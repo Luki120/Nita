@@ -1,9 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-#import <Cephei/HBPreferences.h>
 
 @interface WelcomeViewController : UIViewController
-@property(nonatomic, retain)HBPreferences* preferences;
 @property(nonatomic, retain)UIImageView* headerImageView;
 @property(nonatomic, retain)UIView* dragView;
 @property(nonatomic, retain)UIPanGestureRecognizer* panGesture;
@@ -19,5 +17,4 @@
 @property(nonatomic, retain)UILabel* discordCellTitle;
 @property(nonatomic, retain)UILabel* discordCellSubtitle;
 @property(nonatomic, retain)UILabel* hintLabel;
-@property(nonatomic, retain)UIButton* dismissButton;
 @end

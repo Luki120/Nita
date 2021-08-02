@@ -6,10 +6,6 @@
 
     [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor systemBackgroundColor]];
-    [self setModalInPresentation:YES];
-
-
-    self.preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.nitapreferences"];
 
 
     NSData* inData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/PreferenceBundles/NitaPreferences.bundle/welcome/Circle Of Love.ttf"]];
@@ -245,26 +241,6 @@
     ]];
     
     
-    // dismiss button
-    self.dismissButton = [UIButton new];
-    [[self dismissButton] addTarget:self action:@selector(dismissWelcomeViewController) forControlEvents:UIControlEventTouchUpInside];
-    [[self dismissButton] setBackgroundColor:[UIColor colorWithRed:1 green:0.47 blue:0.60 alpha:1]];
-    [[self dismissButton] setClipsToBounds:YES];
-    [[[self dismissButton] layer] setCornerRadius:8];
-    [[self dismissButton] setTitle:@"Dismiss" forState:UIControlStateNormal];
-    [[[self dismissButton] titleLabel] setFont:[UIFont systemFontOfSize:21 weight:UIFontWeightMedium]];
-    [[[self dismissButton] titleLabel] setTextColor:[UIColor labelColor]];
-    [[self dragView] addSubview:[self dismissButton]];
-    
-    [[self dismissButton] setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [NSLayoutConstraint activateConstraints:@[
-        [self.dismissButton.bottomAnchor constraintEqualToAnchor:self.dragView.bottomAnchor constant:-40],
-        [self.dismissButton.leadingAnchor constraintEqualToAnchor:self.dragView.leadingAnchor constant:32],
-        [self.dismissButton.trailingAnchor constraintEqualToAnchor:self.dragView.trailingAnchor constant:-32],
-        [self.dismissButton.heightAnchor constraintEqualToConstant:55],
-    ]];
-    
-    
     // hint label
     self.hintLabel = [UILabel new];
     [[self hintLabel] setText:@"You can always access\n these links inside the preferences"];
@@ -276,7 +252,7 @@
 
     [[self hintLabel] setTranslatesAutoresizingMaskIntoConstraints:NO];
     [NSLayoutConstraint activateConstraints:@[
-        [self.hintLabel.bottomAnchor constraintEqualToAnchor:self.dismissButton.topAnchor constant:-12],
+        [self.hintLabel.bottomAnchor constraintEqualToAnchor:self.dragView.bottomAnchor constant:-32],
         [self.hintLabel.leadingAnchor constraintEqualToAnchor:self.dragView.leadingAnchor constant:32],
         [self.hintLabel.trailingAnchor constraintEqualToAnchor:self.dragView.trailingAnchor constant:-32],
     ]];
@@ -325,13 +301,6 @@
 - (void)openDiscordURL {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/fPHN8KG"] options:@{} completionHandler:nil];
-    
-}
-
-- (void)dismissWelcomeViewController {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [[self preferences] setBool:YES forKey:@"wasWelcomed"];
     
 }
 
