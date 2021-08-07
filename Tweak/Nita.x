@@ -59,6 +59,8 @@
 	WACurrentForecast* currentCond = [currentModel currentConditions];
 	NSInteger currentCode = [currentCond conditionCode];
 
+	int hours = [NSCalendar.currentCalendar component:NSCalendarUnitHour fromDate:NSDate.date];
+
 	if (currentCode <= 2)
 		weatherString = @"🌪";
 	else if (currentCode <= 4)
@@ -85,6 +87,10 @@
 		weatherString = @"🌥";
 	else if (currentCode <= 30)
 		weatherString = @"⛅️";
+	else if ((currentCode <= 32 && hours >= 18) || (hours <= 6))
+		weatherString = @"🌙";
+	else if ((currentCode <= 34 && hours >= 18) || (hours <= 6))
+		weatherString = @"🌙";
 	else if (currentCode <= 32)
 		weatherString = @"☀️";
 	else if (currentCode <= 34)
