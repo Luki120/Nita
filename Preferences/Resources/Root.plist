@@ -179,13 +179,13 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Butterfly</string>
+			<string>BatteryBuddy</string>
 			<key>subtitle</key>
-			<string>Text selection, but colorful</string>
+			<string>Battery indicator, but cute</string>
 			<key>icon</key>
-			<string>featured/Butterfly.png</string>
+			<string>featured/BatteryBuddy.png</string>
 			<key>url</key>
-			<string>https://repo.litten.love/depictions/Butterfly/</string>
+			<string>https://repo.litten.love/depictions/BatteryBuddy/</string>
 		</dict>
 		
 		<dict>
