@@ -36,7 +36,7 @@
 			<key>key</key>
 			<string>replaceCarrier</string>
 			<key>label</key>
-			<string>Replace carrier</string>
+			<string>Replace the carrier</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -48,7 +48,7 @@
 			<key>key</key>
 			<string>replaceTime</string>
 			<key>label</key>
-			<string>Replace time</string>
+			<string>Replace the time</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -60,7 +60,7 @@
 			<key>key</key>
 			<string>alongsideTime</string>
 			<key>label</key>
-			<string>Alongside time</string>
+			<string>Alongside the time</string>
 		</dict>
 		
 		<dict>
@@ -69,7 +69,7 @@
 			<key>label</key>
 			<string>Visibility</string>
 			<key>footerText</key>
-			<string>Disable both options to show only text</string>
+			<string>Disable both options to only show text</string>
 			<key>isStaticText</key>
 			<true/>
 		</dict>

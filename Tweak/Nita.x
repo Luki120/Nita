@@ -16,7 +16,7 @@
 		else if (!showEmojiSwitch && showTemperatureSwitch)
 			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
-			arg1 = conditions;
+			arg1 = condition;
 
 		return %orig(arg1);
 	} else if (replaceTimeSwitch && [arg1 containsString:@":"]) {
@@ -29,7 +29,7 @@
 		else if (!showEmojiSwitch && showTemperatureSwitch)
 			arg1 = [NSString stringWithFormat:@"%@", [[PDDokdo sharedInstance] currentTemperature]];
 		else
-			arg1 = conditions;
+			arg1 = condition;
 
 		return %orig(arg1);
 	} else if (alongsideTimeSwitch && [arg1 containsString:@":"]) {
@@ -42,7 +42,7 @@
 		else if (!showEmojiSwitch && showTemperatureSwitch)
 			arg1 = [NSString stringWithFormat:@"%@ %@", arg1, [[PDDokdo sharedInstance] currentTemperature]];
 		else
-			arg1 = conditions;
+			arg1 = condition;
 
 		return %orig(arg1);
 	} else {

@@ -6,7 +6,7 @@ HBPreferences* preferences = nil;
 
 BOOL enabled = NO;
 
-NSString* conditions = nil;
+NSString* condition = nil;
 NSString* weatherString = nil;
 
 // position
@@ -38,7 +38,7 @@ BOOL hideBreadcrumbsSwitch = YES;
 - (WAForecastModel *)currentForecastModel;
 @end
 
-@interface PDDokdo (Private)
+@interface PDDokdo (Nita)
 @property(nonatomic, retain, readonly)WALockscreenWidgetViewController* weatherWidget;
 @end
 
