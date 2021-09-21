@@ -25,6 +25,10 @@ BOOL hideBreadcrumbsSwitch = YES;
 - (void)getEmojis;
 @end
 
+@interface _UIStatusBarDisplayItem : NSObject
+@property (nonatomic, weak, readonly) id item;
+@end
+
 @interface WACurrentForecast : NSObject
 @property(assign, nonatomic)long long conditionCode;
 - (void)setConditionCode:(long long)arg1;

@@ -111,6 +111,22 @@
 
 %end
 
+%hook _UIStatusBarDisplayItem
+
+- (void)setEnabled:(BOOL)arg1 {
+
+	%orig;
+
+	if(!alongsideTimeSwitch) return;
+
+	if([[self item] isKindOfClass:%c(_UIStatusBarIndicatorLocationItem)])
+
+		%orig(NO);
+
+}
+
+%end
+
 %hook SBDeviceApplicationSceneStatusBarBreadcrumbProvider
 
 + (BOOL)_shouldAddBreadcrumbToActivatingSceneEntity:(id)arg1 sceneHandle:(id)arg2 withTransitionContext:(id)arg3 { // hide breadcrumbs
